@@ -151,7 +151,7 @@ if not args.z and not args.matrix_form:
                     xdata = M[:, xcol]
                     ydata = M[:, int(i)]
                 else:
-                    xdata = np.arange(len(M[:, int(i)]))
+                    xdata = numpy.arange(len(M[:, int(i)]))
                     ydata = M[:, int(i)]
 
                 if args.style == 'line':
