@@ -48,6 +48,9 @@ parser.add_argument("-m", "--matrix-form",
                     help="data in matrix form", action='store_true')
 parser.add_argument("-T", "--matrix-transpose",
                     help="transpose data in matrix form", action='store_true')
+parser.add_argument("-L", "--log", help="Loglog axes", action='store_true', default=False)
+parser.add_argument("-Lx", "--logx", help="Semilogx axes", action='store_true', default=False)
+parser.add_argument("-Ly", "--logy", help="Semilogy axes", action='store_true', default=False)
 parser.add_argument("-X", "--x-label",
                     help="label for use on X axis", type=str)
 parser.add_argument("-Y", "--y-label",
@@ -181,6 +184,11 @@ if not args.z and not args.matrix_form:
 
     if args.legends and len(args.legends) > 0:
         axes.legend(args.legends.split(","))
+
+    if args.log or args.logx:
+        axes.set_xscale("log")
+    if args.log or args.logy:
+        axes.set_yscale("log")
 
     axes.autoscale(tight=True)
 
